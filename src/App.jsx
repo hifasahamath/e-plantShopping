@@ -1,39 +1,41 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
-import ProductList from "./components/ProductList.jsx";
-import CartItem from "./components/CartItem.jsx";
-import AboutUs from "./components/AboutUs.jsx";
+import React, { useState } from "react";
+import ProductList from "./components/ProductList";
+import CartItem from "./components/CartItem";
+import AboutUs from "./components/AboutUs";
+import Navbar from "./components/Navbar";
 import "./App.css";
 
-export default function App() {
-  const navigate = useNavigate();
+function App() {
+  const [page, setPage] = useState("home"); // home | plants | cart | about
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <div className="landing">
-            <div className="overlay">
-              <h1 className="title">Paradise Nursery</h1>
-              <p className="subtitle">
-                bring nature home with beautiful indoor plants 🌿
-              </p>
-              <div className="landing-actions">
-                <button className="btn" onClick={() => navigate("/plants")}>
-                  Get Started
-                </button>
-                <button className="btn secondary" onClick={() => navigate("/about")}>
-                  About Us
-                </button>
-              </div>
+    <div>
+      {/* navbar should show on plants/cart/about (optional on home) */}
+      {page !== "home" && <Navbar page={page} setPage={setPage} />}
+
+      {page === "home" && (
+        <div className="landing">
+          <div className="hero">
+            <h1>Welcome to Paradise Nursery</h1>
+            <p>bring nature home with beautiful indoor plants 🌿</p>
+
+            <div className="hero-actions">
+              <button className="btn primary" onClick={() => setPage("plants")}>
+                Get Started
+              </button>
+              <button className="btn secondary" onClick={() => setPage("about")}>
+                About Us
+              </button>
             </div>
           </div>
-        }
-      />
+        </div>
+      )}
 
-      <Route path="/about" element={<AboutUs />} />
-      <Route path="/plants" element={<ProductList />} />
-      <Route path="/cart" element={<CartItem />} />
-    </Routes>
+      {page === "plants" && <ProductList setPage={setPage} />}
+      {page === "cart" && <CartItem setPage={setPage} />}
+      {page === "about" && <AboutUs />}
+    </div>
   );
 }
+
+export default App;

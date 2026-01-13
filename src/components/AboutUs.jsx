@@ -1,34 +1,29 @@
-import { Link } from "react-router-dom";
+import React from "react";
 
-export default function AboutUs() {
+function AboutUs() {
   return (
-    <>
-      <div className="navbar">
-        <div className="nav-inner">
-          <div style={{ fontWeight: 800 }}>Paradise Nursery</div>
-          <div className="nav-links">
-            <Link to="/">Home</Link>
-            <Link to="/plants">Plants</Link>
-          </div>
-        </div>
-      </div>
+    <div className="about-us-container">
+      <h1>About Paradise Nursery</h1>
 
-      <div className="page">
-        <h2>About Paradise Nursery</h2>
-        <p className="muted">
-          Paradise Nursery is a friendly online plant shop that helps people bring
-          nature into their homes. We believe plants make spaces healthier, calmer,
-          and more beautiful.
-        </p>
-        <p className="muted">
-          Our nursery offers a curated selection of indoor plants, from easy-care
-          options for beginners to statement pieces for plant lovers. Each plant
-          comes with simple care tips so you can keep it thriving.
-        </p>
-        <p className="muted">
-          Thanks for supporting our little green paradise 🌿
-        </p>
-      </div>
-    </>
+      <p>
+        Paradise Nursery is your trusted destination for beautiful and healthy
+        indoor plants. We make it easy to bring nature into your home with a
+        curated collection of plants for every space.
+      </p>
+
+      <p>
+        Our mission is to inspire people to live greener by offering affordable,
+        high-quality plants along with simple care tips for beginners and plant
+        lovers.
+      </p>
+
+      <p>
+        Whether you want low-maintenance plants for your desk or statement plants
+        for your living room, Paradise Nursery is here to help you grow your
+        indoor jungle.
+      </p>
+    </div>
   );
 }
+
+export default AboutUs;
